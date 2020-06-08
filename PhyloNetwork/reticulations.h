@@ -14,6 +14,4 @@ vector<vector<int>> get_retic_sets(vector<vector<vector<int>>> prs, vector<vecto
 
 void add_k_retic(node* tree, vector<vector<vector<int>>> prs, int k, double& prob, vector<int>& rtcs); //Процедура добавления k ретикуляций в дерево
 
-//bool vec_contains(vector<int> cur, vector<int> src);
-
 void add_retic_to_net(node* tree, vector<vector<vector<int>>> prs, int k, double& prob, vector<int>& rtcs);

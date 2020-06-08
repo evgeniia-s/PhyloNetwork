@@ -1,16 +1,15 @@
-#pragma once
+п»ї#pragma once
 #include <vector>
 #include "node.h"
 #include "floyd_warshall.h"
 
 using namespace std;
 
-//bool equal_vec(vector<int> left, vector<int> right); //Операция сравнения двух наборов чисел
+void get_edges(node* tree, vector<vector<int>>& edg); //Р“РµРЅРµСЂР°С†РёСЏ РІСЃРµС… СЂС‘Р±РµСЂ РґРµСЂРµРІР°
 
-void get_edges(node* tree, vector<vector<int>>& edg); //Генерация всех рёбер дерева
+void get_pairs(vector<vector<int>> edg, int** d, vector<vector<vector<int>>>& prs); //Р’С‹Р±РѕСЂ РІСЃРµС… РґРѕРїСѓСЃС‚РёРјС‹С… РґР»СЏ СЂРµС‚РёРєСѓР»СЏС†РёРё РїР°СЂ СЂС‘Р±РµСЂ
 
-void get_pairs(vector<vector<int>> edg, int** d, vector<vector<vector<int>>>& prs); //Выбор всех допустимых для ретикуляции пар рёбер
+bool next_set(int* a, int n, int m); //Р“РµРЅРµСЂР°С†РёСЏ СЃРѕС‡РµС‚Р°РЅРёР№
 
-bool next_set(int* a, int n, int m); //Генерация сочетаний
+vector<vector<int>> get_sets(int* a, int k, int n); //РџРѕР»СѓС‡РµРЅРёРµ РЅР°Р±РѕСЂРѕРІ СЃРѕС‡РµС‚Р°РЅРёР№ 
 
-vector<vector<int>> get_sets(int* a, int k, int n); //Получение наборов сочетаний

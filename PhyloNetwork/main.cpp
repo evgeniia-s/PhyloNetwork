@@ -11,8 +11,6 @@
 #include "net_files.h"
 #include "tree_transform.h"
 
-//java -jar D:\PhyloNet\PhyloNet_3.8.0.jar D:\nets.nex
-
 int main()
 {
 	node* tree = new node(vector<node*>(), vector<node*>(), "", 0, false);
@@ -87,8 +85,6 @@ int main()
 	vector<string> k_nets;
 	nums_to_labels(tree_0);
 
-	//node* t = copy_tree(tree_0);
-
 	double prb = 0;
 
 	vector<int> rtcs;
@@ -104,9 +100,6 @@ int main()
 	cout << endl << "k + 1 reticulations: " << endl;
 
 	add_k_retic(tree_0, p, 2, prb, rtcs);*/
-
-	//for (int i = 0; i < nets.size(); i++)
-	//	cout << i + 1 << ":   " << nets[i] << endl;
 
 	system("pause");
 
