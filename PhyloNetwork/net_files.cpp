@@ -95,11 +95,14 @@ void file_process(int k)
 	int n = 0;
 	double p_1 = 0; double p_2 = 0;
 
-	while (getline(fin, line) && !fin.eof())
+	// && !fin.eof())
+
+	while (getline(fin, line))
 	{
-		tmp = line.substr(0, line.find(' '));
+		tmp = line.substr(0, line.find('\t'));
 		fout << i << ": " + tmp + ' ' << endl;
-		tmp = line.substr(line.find('(') - 1);
+		tmp = line.substr(line.find('('));
+		remove_odd_node(tmp);
 
 		tree = string_to_tree(tmp);
 		number_of_nodes(tree, n);
@@ -111,6 +114,10 @@ void file_process(int k)
 			d[i] = new int[n];
 
 		floyd(tree, d, n);
+
+		nums_to_labels(tree);
+
+		cout << net_to_string(tree);
 
 		vector<vector<int>> e;
 
