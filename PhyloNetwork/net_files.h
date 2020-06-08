@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include <cstdio>
 #include <iostream>
 #include <memory>
@@ -9,14 +9,14 @@
 #include <iostream>
 #include "node.h"
 
-void read_file(vector<string>& cont); //Процедура чтения содержимого файла
+void read_file(vector<string>& cont); //РџСЂРѕС†РµРґСѓСЂР° С‡С‚РµРЅРёСЏ СЃРѕРґРµСЂР¶РёРјРѕРіРѕ С„Р°Р№Р»Р°
 
-void upd_file(vector<string>& cont, string net); //Процедура изменения содержимого файла
+void upd_file(vector<string>& cont, string net); //РџСЂРѕС†РµРґСѓСЂР° РёР·РјРµРЅРµРЅРёСЏ СЃРѕРґРµСЂР¶РёРјРѕРіРѕ С„Р°Р№Р»Р°
 
-void write_file(vector<string> cont); //Процедура записи нового содержимого в файл
+void write_file(vector<string> cont); //РџСЂРѕС†РµРґСѓСЂР° Р·Р°РїРёСЃРё РЅРѕРІРѕРіРѕ СЃРѕРґРµСЂР¶РёРјРѕРіРѕ РІ С„Р°Р№Р»
 
 string execute(string cmd); 
 
-string exec(const char* cmd);
+string exec(const char* cmd); //Р’С‹Р·РѕРІ РєРѕРјР°РЅРґС‹ РёР· РєРѕРјР°РЅРґРЅРѕР№ СЃС‚СЂРѕРєРё Рё РїРµСЂРµС…РІР°С‚ СЂРµР·СѓР»СЊС‚Р°С‚Р° РІ СЃС‚СЂРѕРєСѓ
 
-void get_prob(string net, double& prob); //Получение log probability заданной сети
+void get_prob(string net, double& prob); //РџРѕР»СѓС‡РµРЅРёРµ log probability Р·Р°РґР°РЅРЅРѕР№ СЃРµС‚Рё

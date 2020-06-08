@@ -1,11 +1,11 @@
-#pragma once
+п»ї#pragma once
 #include "node.h"
 
-void number_of_nodes(node* r, int& n); //Нахождение количества узлов в дереве
+void number_of_nodes(node* r, int& n); //РќР°С…РѕР¶РґРµРЅРёРµ РєРѕР»РёС‡РµСЃС‚РІР° СѓР·Р»РѕРІ РІ РґРµСЂРµРІРµ
 
-node* get_to_node(node* r, int num); //Нахождение узла по номеру
+node* get_to_node(node* r, int num); //РќР°С…РѕР¶РґРµРЅРёРµ СѓР·Р»Р° РїРѕ РЅРѕРјРµСЂСѓ
 
-bool is_edge(node* r, int num); //Проверка существования ребра между вершинами
+bool is_edge(node* r, int num); //РџСЂРѕРІРµСЂРєР° СЃСѓС‰РµСЃС‚РІРѕРІР°РЅРёСЏ СЂРµР±СЂР° РјРµР¶РґСѓ РІРµСЂС€РёРЅР°РјРё
 
-void floyd(node* r, int** d, int n); //Алгоритм Флойда-Уоршелла
+void floyd(node* r, int** d, int n); //РђР»РіРѕСЂРёС‚Рј Р¤Р»РѕР№РґР°-РЈРѕСЂС€РµР»Р»Р°
 

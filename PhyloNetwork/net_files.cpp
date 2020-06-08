@@ -82,25 +82,3 @@ void get_prob(string net, double& prob)
 		prob = stod(p);
 	}
 }
-
-//#NEXUS
-//
-//BEGIN NETWORKS;
-//
-//Network net = (((((4, #H2:1::0.5), (7, #H3:1::0.5))3, #H1:1::0.5), (6)#H2:1::0.5)1, ((5)#H1:1::0.5, (8)#H3 : 1::0.5)2);
-//
-//END;
-//
-//
-//BEGIN TREES;
-//
-//Tree tree = (((4, 7)3, 6)1, (5, 8)2);
-//
-//END;
-//
-//
-//BEGIN PHYLONET;
-//
-//CalGTProb net(geneTree1);
-//
-//END;

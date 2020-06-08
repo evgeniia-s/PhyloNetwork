@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include <string>
 #include "node.h"
 #include "combinations.h"
@@ -6,12 +6,12 @@
 #include "net_transform.h"
 #include "net_files.h"
 
-void add_retic(node* tree, vector<int> edg_1, vector<int> edg_2, int num_ret); //Процедура инкрементного добавления ретикуляционного ребра
+void add_retic(node* tree, vector<int> edg_1, vector<int> edg_2, int num_ret); //РџСЂРѕС†РµРґСѓСЂР° РёРЅРєСЂРµРјРµРЅС‚РЅРѕРіРѕ РґРѕР±Р°РІР»РµРЅРёСЏ СЂРµС‚РёРєСѓР»СЏС†РёРѕРЅРЅРѕРіРѕ СЂРµР±СЂР°
 
-bool check_pairs(vector<vector<vector<int>>> prs, vector<int> nums); //Проверка полученного набора пар рёбер на допустимость для одновременных ретикуляций
+bool check_pairs(vector<vector<vector<int>>> prs, vector<int> nums); //РџСЂРѕРІРµСЂРєР° РїРѕР»СѓС‡РµРЅРЅРѕРіРѕ РЅР°Р±РѕСЂР° РїР°СЂ СЂС‘Р±РµСЂ РЅР° РґРѕРїСѓСЃС‚РёРјРѕСЃС‚СЊ РґР»СЏ РѕРґРЅРѕРІСЂРµРјРµРЅРЅС‹С… СЂРµС‚РёРєСѓР»СЏС†РёР№
 
-vector<vector<int>> get_retic_sets(vector<vector<vector<int>>> prs, vector<vector<int>> sets); //Получение наборов из k пар рёбер, допустимых для ретикуляций
+vector<vector<int>> get_retic_sets(vector<vector<vector<int>>> prs, vector<vector<int>> sets); //РџРѕР»СѓС‡РµРЅРёРµ РЅР°Р±РѕСЂРѕРІ РёР· k РїР°СЂ СЂС‘Р±РµСЂ, РґРѕРїСѓСЃС‚РёРјС‹С… РґР»СЏ СЂРµС‚РёРєСѓР»СЏС†РёР№
 
-void add_k_retic(node* tree, vector<vector<vector<int>>> prs, int k, double& prob, vector<int>& rtcs); //Процедура добавления k ретикуляций в дерево
+void add_k_retic(node* tree, vector<vector<vector<int>>> prs, int k, double& prob, vector<int>& rtcs); //РџСЂРѕС†РµРґСѓСЂР° РґРѕР±Р°РІР»РµРЅРёСЏ k СЂРµС‚РёРєСѓР»СЏС†РёР№ РІ РґРµСЂРµРІРѕ
 
 void add_retic_to_net(node* tree, vector<vector<vector<int>>> prs, int k, double& prob, vector<int>& rtcs);

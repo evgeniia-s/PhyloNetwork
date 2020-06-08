@@ -1,18 +1,5 @@
 #include "combinations.h"
 
-//bool equal_vec(vector<int> left, vector<int> right)
-//{
-//	if (left.size() != right.size())
-//		return false;
-//	else
-//	{
-//		for (int i = 0; i < left.size(); i++)
-//			if (left[i] != right[i])
-//				return false;
-//		return true;
-//	}
-//}
-
 void get_edges(node* r, vector<vector<int>>& edg)
 {
 	vector<int> tmp;

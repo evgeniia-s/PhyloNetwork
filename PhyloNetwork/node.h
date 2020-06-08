@@ -1,21 +1,21 @@
-#pragma once
+п»ї#pragma once
 #include <string>
 #include <vector>
 
 using namespace std;
 
-class node //Класс узел дерева
+class node //РљР»Р°СЃСЃ СѓР·РµР» РґРµСЂРµРІР°
 {
 public:
-	//vector<node*> r; //Предок узлa
-	vector<node*> p; //Потомки узла
-	string label; //Имя узла
-	int number; //Номер узла
-	bool is_retic; //Является ли узел частью ретикуляции
-	node* retic; //Второй узел ретикуляции, если текущий - её часть 
-	int num_retic; //Имя узла ретикуляции
+	//vector<node*> r; //РџСЂРµРґРѕРє СѓР·Р»a
+	vector<node*> p; //РџРѕС‚РѕРјРєРё СѓР·Р»Р°
+	string label; //РРјСЏ СѓР·Р»Р°
+	int number; //РќРѕРјРµСЂ СѓР·Р»Р°
+	bool is_retic; //РЇРІР»СЏРµС‚СЃСЏ Р»Рё СѓР·РµР» С‡Р°СЃС‚СЊСЋ СЂРµС‚РёРєСѓР»СЏС†РёРё
+	node* retic; //Р’С‚РѕСЂРѕР№ СѓР·РµР» СЂРµС‚РёРєСѓР»СЏС†РёРё, РµСЃР»Рё С‚РµРєСѓС‰РёР№ - РµС‘ С‡Р°СЃС‚СЊ 
+	int num_retic; //РРјСЏ СѓР·Р»Р° СЂРµС‚РёРєСѓР»СЏС†РёРё
 
-	node() //Конструктор без параметров
+	node() //РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ Р±РµР· РїР°СЂР°РјРµС‚СЂРѕРІ
 	{
 		//this->r = vector<node*>();
 		this->p = vector<node*>();
@@ -24,7 +24,7 @@ public:
 		this->is_retic = false;
 	}
 
-	node(vector<node*> n_r, vector<node*> n_p, string n_l, int n_num, bool n_is) //Конструктор с параметрами
+	node(vector<node*> n_r, vector<node*> n_p, string n_l, int n_num, bool n_is) //РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё
 	{
 		/*for (int i = 0; i++; i < n_r.size())
 			this->r.push_back(n_r[i]);*/
@@ -37,6 +37,6 @@ public:
 }
 ;
 
-node* copy_node(node* src); //Копирование вершины дерева
-node* copy_tree(node* src); //Копирование дерева
+node* copy_node(node* src); //РљРѕРїРёСЂРѕРІР°РЅРёРµ РІРµСЂС€РёРЅС‹ РґРµСЂРµРІР°
+node* copy_tree(node* src); //РљРѕРїРёСЂРѕРІР°РЅРёРµ РґРµСЂРµРІР°
 

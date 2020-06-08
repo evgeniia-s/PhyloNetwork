@@ -1,19 +1,19 @@
-#include "reticulations.h"
+ï»¿#include "reticulations.h"
 
 void add_retic(node* tree, vector<int> edg_1, vector<int> edg_2, int num_ret)
 {
-	node* t_0; //4 óçëà - ñîñòàâëÿþùèå 2 äóã,
-	node* t_1; //ìåæäó êîòîðûìè âñòàâëÿþòñÿ ðåòèêóëÿöèè
+	node* t_0; //4 ÑƒÐ·Ð»Ð° - ÑÐ¾ÑÑ‚Ð°Ð²Ð»ÑÑŽÑ‰Ð¸Ðµ 2 Ð´ÑƒÐ³,
+	node* t_1; //Ð¼ÐµÐ¶Ð´Ñƒ ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ð¼Ð¸ Ð²ÑÑ‚Ð°Ð²Ð»ÑÑŽÑ‚ÑÑ Ñ€ÐµÑ‚Ð¸ÐºÑƒÐ»ÑÑ†Ð¸Ð¸
 	node* t_2;
 	node* t_3;
-	node* ret_0 = new node(); //2 óçëà - ñîñòàâëÿþùèå ðåòèêóëÿöèè, 
-	node* ret_1 = new node(); //êîòîðûå âñòàâëÿþòñÿ ïîñåðåäèíå èñõîäíûõ äóã
+	node* ret_0 = new node(); //2 ÑƒÐ·Ð»Ð° - ÑÐ¾ÑÑ‚Ð°Ð²Ð»ÑÑŽÑ‰Ð¸Ðµ Ñ€ÐµÑ‚Ð¸ÐºÑƒÐ»ÑÑ†Ð¸Ð¸, 
+	node* ret_1 = new node(); //ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ðµ Ð²ÑÑ‚Ð°Ð²Ð»ÑÑŽÑ‚ÑÑ Ð¿Ð¾ÑÐµÑ€ÐµÐ´Ð¸Ð½Ðµ Ð¸ÑÑ…Ð¾Ð´Ð½Ñ‹Ñ… Ð´ÑƒÐ³
 
-	t_0 = get_to_node(tree, edg_1[0]); //Íà÷àëî 1é äóãè
-	t_1 = get_to_node(tree, edg_2[0]); //Íà÷àëî 2é äóãè
+	t_0 = get_to_node(tree, edg_1[0]); //ÐÐ°Ñ‡Ð°Ð»Ð¾ 1Ð¹ Ð´ÑƒÐ³Ð¸
+	t_1 = get_to_node(tree, edg_2[0]); //ÐÐ°Ñ‡Ð°Ð»Ð¾ 2Ð¹ Ð´ÑƒÐ³Ð¸
 
-	t_2 = get_to_node(tree, edg_1[1]); //Êîíåö 1é äóãè
-	t_3 = get_to_node(tree, edg_2[1]); //Êîíåö 2é äóãè
+	t_2 = get_to_node(tree, edg_1[1]); //ÐšÐ¾Ð½ÐµÑ† 1Ð¹ Ð´ÑƒÐ³Ð¸
+	t_3 = get_to_node(tree, edg_2[1]); //ÐšÐ¾Ð½ÐµÑ† 2Ð¹ Ð´ÑƒÐ³Ð¸
 
 	ret_0->p.push_back(t_2);
 	ret_1->p.push_back(t_3);
