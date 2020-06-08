@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include <string>
 #include <iostream>
 #include "node.h"
@@ -6,8 +6,8 @@
 #include "floyd_warshall.h"
 #include "net_transform.h"
 
-void nums_to_labels(node* t); //Запись номеров вершин в их названия (для отладки)
+void nums_to_labels(node* t); //Р—Р°РїРёСЃСЊ РЅРѕРјРµСЂРѕРІ РІРµСЂС€РёРЅ РІ РёС… РЅР°Р·РІР°РЅРёСЏ (РґР»СЏ РѕС‚Р»Р°РґРєРё)
 
-string net_to_string_recur(node* cur, int& num_retic); //Перевод филогенетической сети в строку
+string net_to_string_recur(node* cur, int& num_retic); //РџРµСЂРµРІРѕРґ С„РёР»РѕРіРµРЅРµС‚РёС‡РµСЃРєРѕР№ СЃРµС‚Рё РІ СЃС‚СЂРѕРєСѓ
 
 string net_to_string(node* root);
