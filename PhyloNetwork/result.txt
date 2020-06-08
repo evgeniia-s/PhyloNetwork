@@ -1,0 +1,2 @@
+
+CalGTProb net (geneTree1) -o
