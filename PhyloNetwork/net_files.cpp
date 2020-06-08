@@ -82,3 +82,55 @@ void get_prob(string net, double& prob)
 		prob = stod(p);
 	}
 }
+
+void file_process(int k)
+{
+	ifstream fin("D:\\trees.txt");
+	ofstream fout("D:\\res.txt");
+
+	node* tree;
+	string line;
+	string tmp;
+	int i = 1;
+	int n = 0;
+	double p_1 = 0; double p_2 = 0;
+
+	while (getline(fin, line) && !fin.eof())
+	{
+		tmp = line.substr(0, line.find(' '));
+		fout << i << ": " + tmp + ' ' << endl;
+		tmp = line.substr(line.find('(') - 1);
+
+		tree = string_to_tree(tmp);
+		number_of_nodes(tree, n);
+		fout << "Number of nodes: " << n << endl;
+
+		int** d;
+		d = new int *[n];
+		for (int i = 0; i < n; i++)
+			d[i] = new int[n];
+
+		floyd(tree, d, n);
+
+		vector<vector<int>> e;
+
+		get_edges(tree, e);
+
+		vector<vector<vector<int>>> p;
+
+		get_pairs(e, d, p);
+
+		vector<int> rtcs;
+
+		fout << "Probability of k + 1 increment net: ";
+		add_k_retic(tree, p, k, p_1, rtcs);
+		add_retic_to_net(tree, p, k + 1, p_1, rtcs);
+		fout << p_1;
+
+		fout << "Probability of k + 1 usual net: ";
+		add_k_retic(tree, p, k + 1, p_1, rtcs);
+		fout << p_2;
+	}
+	fout.close();
+	fin.close();
+}

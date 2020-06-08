@@ -8,6 +8,11 @@
 #include <fstream>
 #include <iostream>
 #include "node.h"
+#include "tree_transform.h"
+#include "floyd_warshall.h"
+#include "combinations.h"
+#include "reticulations.h"
+#include "net_transform.h"
 
 void read_file(vector<string>& cont); //Процедура чтения содержимого файла
 
@@ -20,3 +25,5 @@ string execute(string cmd);
 string exec(const char* cmd); //Вызов команды из командной строки и перехват результата в строку
 
 void get_prob(string net, double& prob); //Получение log probability заданной сети
+
+void file_process(int k); //

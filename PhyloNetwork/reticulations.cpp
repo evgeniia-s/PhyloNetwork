@@ -105,8 +105,6 @@ void add_k_retic(node* tree, vector<vector<vector<int>>> prs, int k, double& pro
 		}
 		net.clear();
 	}	
-	cout << endl << "Best net: " << res << endl;
-	cout << "Its log probability: " << max << endl;
 
 	for (int i = 0; i < retic_sets[r].size(); i++)
 		rtcs.push_back(retic_sets[r][i]);
@@ -167,8 +165,4 @@ void add_retic_to_net(node* tree, vector<vector<vector<int>>> prs, int k, double
 	}
 
 	prob = max;
-
-	cout << endl << "Best net: " << k_net << endl;
-	cout << "Its log probability: " << max << endl;
-
 }
