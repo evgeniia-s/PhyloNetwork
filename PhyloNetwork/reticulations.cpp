@@ -21,10 +21,10 @@ void add_retic(node* tree, vector<int> edg_1, vector<int> edg_2, int num_ret)
 	ret_0->is_retic = true;
 	ret_1->is_retic = true;
 
-	ret_0->retic = ret_1;
+	ret_1->retic = ret_0;
 
-	ret_0->label = "#H" + to_string(num_ret);
-	ret_1->label = "#H" + to_string(num_ret);
+	ret_0->label = "#H" + to_string(num_ret) + ":1:0.5";
+	ret_1->label = "#H" + to_string(num_ret) + ":1:0.5";
 
 	if (t_0->p[0]->number == t_2->number)
 		t_0->p[0] = ret_0;
@@ -65,15 +65,17 @@ vector<vector<int>> get_retic_sets(vector<vector<vector<int>>> prs, vector<vecto
 	return res;
 }
 
-void add_k_retic(node* tree, vector<vector<vector<int>>> prs, int k, double& prob, vector<int>& rtcs)
+void add_k_retic(node* tree, vector<vector<vector<int>>> prs, int k, double& prob, vector<int>& rtcs, bool& pos_k)
 {
 	vector<int> u;
 	vector<int> v;
 	node* tmp;
-	string net; string res;
+	string net; string res; 
 	int t = 0;
     double p = 0, max = 1000;
 	int r = 0;
+
+	string tr = net_to_string(tree);
 
 	int* a = new int[prs.size()];
 
@@ -84,31 +86,36 @@ void add_k_retic(node* tree, vector<vector<vector<int>>> prs, int k, double& pro
 
 	vector<vector<int>> retic_sets = get_retic_sets(prs, sets);
 
-	for (int i = 0; i < retic_sets.size(); i++)
+	pos_k = retic_sets.size() != 0;
+
+	if (pos_k)
 	{
-		tmp = copy_tree(tree);
-		for (int j = 0; j < k; j++)
-		{ 
-			t = retic_sets[i][j];
-			u = prs[t][0];
-			v = prs[t][1];
-
-			add_retic(tmp, u, v, j + 1);
-		}
-		net = net_to_string(tmp);
-		get_prob(net, p);
-		if (abs(p) < max)
+		for (int i = 0; i < retic_sets.size(); i++)
 		{
-			max = abs(p);
-			r = i;
-			res = net;
-		}
-		net.clear();
-	}	
+			tmp = copy_tree(tree);
+			for (int j = 0; j < k; j++)
+			{
+				t = retic_sets[i][j];
+				u = prs[t][0];
+				v = prs[t][1];
 
-	for (int i = 0; i < retic_sets[r].size(); i++)
-		rtcs.push_back(retic_sets[r][i]);
-	prob = max;
+				add_retic(tmp, u, v, j + 1);
+			}
+			net = net_to_string(tmp);
+			get_prob(net, tr, p);
+			if (abs(p) < max)
+			{
+				max = abs(p);
+				r = i;
+				res = net;
+			}
+			net.clear();
+		}
+
+		for (int i = 0; i < retic_sets[r].size(); i++)
+			rtcs.push_back(retic_sets[r][i]);
+		prob = max;
+	}
 }
 
 //bool vec_contains(vector<int> cur, vector<int> src)
@@ -130,6 +137,8 @@ void add_retic_to_net(node* tree, vector<vector<vector<int>>> prs, int k, double
 	double p = 0, max = 1000;
 	bool f = 0;
 	vector<int> tm; vector<vector<int>> retic_sets;
+
+	string tr = net_to_string(tree);
 
 	for (int i = 0; i < prs.size(); i++)
 	{
@@ -155,7 +164,7 @@ void add_retic_to_net(node* tree, vector<vector<vector<int>>> prs, int k, double
 			add_retic(tmp, u, v, j + 1);
 		}
 		net = net_to_string(tmp);
-		get_prob(net, p);
+		get_prob(net, tr, p);
 		if (abs(p) < max)
 		{
 			max = abs(p);

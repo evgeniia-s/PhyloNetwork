@@ -12,6 +12,6 @@ bool check_pairs(vector<vector<vector<int>>> prs, vector<int> nums); //Пров�
 
 vector<vector<int>> get_retic_sets(vector<vector<vector<int>>> prs, vector<vector<int>> sets); //Получение наборов из k пар рёбер, допустимых для ретикуляций
 
-void add_k_retic(node* tree, vector<vector<vector<int>>> prs, int k, double& prob, vector<int>& rtcs); //Процедура добавления k ретикуляций в дерево
+void add_k_retic(node* tree, vector<vector<vector<int>>> prs, int k, double& prob, vector<int>& rtcs, bool& pos_k); //Процедура добавления k ретикуляций в дерево
 
 void add_retic_to_net(node* tree, vector<vector<vector<int>>> prs, int k, double& prob, vector<int>& rtcs);

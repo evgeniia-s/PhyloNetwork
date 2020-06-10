@@ -1,8 +1,8 @@
 #include "net_files.h"
 
-void read_file(vector<string>& cont)
+void read_file(vector<string>& cont, string file_name)
 {
-	ifstream fin("D:\\nets.nex");
+	ifstream fin(file_name);
 
 	string line;
 
@@ -14,22 +14,29 @@ void read_file(vector<string>& cont)
 	fin.close();
 }
 
-void upd_file(vector<string>& cont, string net)
+void upd_file(vector<string>& cont, string net, string tree)
 {
 	for (int i = 0; i < cont.size(); i++)
 	{
-		size_t found = cont[i].find("Network net = ");
-		if (found != -1)
+		size_t net_found = cont[i].find("Network net = ");
+		if (net_found != -1)
 		{
-			string old = cont[i].substr(found + 14);
+			string old = cont[i].substr(net_found + 14);
 			cont[i].replace(cont[i].find(old), old.length(), net);
+		}
+
+		size_t tree_found = cont[i].find("geneTree1 = ");
+		if (tree_found != -1)
+		{
+			string old_tree = cont[i].substr(tree_found + 12);
+			cont[i].replace(cont[i].find(old_tree), old_tree.length(), tree);
 		}
 	}
 }
 
-void write_file(vector<string> cont)
+void write_file(vector<string> cont, string file_name)
 {
-	ofstream fout("D:\\nets.nex");
+	ofstream fout(file_name);
 
 	int i = 0;
 
@@ -65,32 +72,32 @@ string exec(const char* cmd) {
 	return result;
 }
 
-void get_prob(string net, double& prob)
+void get_prob(string net, string tree,  double& prob)
 {
 	vector<string> lines;
 
-	read_file(lines);
-	upd_file(lines, net);
-	write_file(lines);
+	read_file(lines, "D:\\nets.nex");
+	upd_file(lines, net, tree);
+	write_file(lines, "D:\\nets.nex");
 
 	string tmp = exec("java -jar D:\\PhyloNet\\PhyloNet_3.8.0.jar D:\\nets.nex");
 
 	size_t found = tmp.find("probability: ");
 	if (found != -1)
 	{
-		string p = tmp.substr(found + 13, 10);
+		string p = tmp.substr(found + 13, 12);
 		prob = stod(p);
 	}
 }
 
-void file_process(int k)
+void file_process(int k, double eps, bool& pos_k, vector<string>& cont)
 {
 	ifstream fin("D:\\trees.txt");
-	ofstream fout("D:\\res.txt");
 
 	node* tree;
 	string line;
-	string tmp;
+	string tmp; 
+	string vec;
 	int i = 1;
 	int n = 0;
 	double p_1 = 0; double p_2 = 0;
@@ -100,13 +107,16 @@ void file_process(int k)
 	while (getline(fin, line))
 	{
 		tmp = line.substr(0, line.find('\t'));
-		fout << i << ": " + tmp + ' ' << endl;
+		vec = to_string(i) + ": " + tmp + '\n';
+		cont.push_back(vec);
+		vec.clear();
 		tmp = line.substr(line.find('('));
-		remove_odd_node(tmp);
 
 		tree = string_to_tree(tmp);
 		number_of_nodes(tree, n);
-		fout << "Number of nodes: " << n << endl;
+		vec = "Number of nodes: " + to_string(n) + '\n';
+		cont.push_back(vec);
+		vec.clear();
 
 		int** d;
 		d = new int *[n];
@@ -115,7 +125,7 @@ void file_process(int k)
 
 		floyd(tree, d, n);
 
-		nums_to_labels(tree);
+		//nums_to_labels(tree);
 
 		cout << net_to_string(tree);
 
@@ -129,15 +139,45 @@ void file_process(int k)
 
 		vector<int> rtcs;
 
-		fout << "Probability of k + 1 increment net: ";
-		add_k_retic(tree, p, k, p_1, rtcs);
-		add_retic_to_net(tree, p, k + 1, p_1, rtcs);
-		fout << p_1;
+		add_k_retic(tree, p, k + 1, p_1, rtcs, pos_k);
+		if (!pos_k)
+		{
+			vec = "Not possible to add " + to_string(k + 1) + " reticulations." + '\n';
+			cont.push_back(vec);
+			vec.clear();
+		}
 
-		fout << "Probability of k + 1 usual net: ";
-		add_k_retic(tree, p, k + 1, p_1, rtcs);
-		fout << p_2;
+		else
+		{
+			vec = "For k = " + to_string(k) + " probability of k + 1 usual net: " + to_string(p_1) + '\n';
+			cont.push_back(vec);
+			vec.clear();
+			rtcs.clear();
+
+			add_k_retic(tree, p, k, p_2, rtcs, pos_k);
+			add_retic_to_net(tree, p, k + 1, p_2, rtcs);
+
+			if (p_2 != 1000)
+			{
+				vec = "For k = " + to_string(k) + " probability of k + 1 increment net: " + to_string(p_2) + '\n';
+				cont.push_back(vec);
+				vec.clear();
+			}
+			else
+			{
+				vec = "For k = " + to_string(k) + " k + 1 increment net is not reachable from k optimal net." + '\n';
+				cont.push_back(vec);
+				vec.clear();
+			}
+
+
+
+			bool opt = (abs(p_1 - p_2) < eps);
+			vec = "For the precision = " + to_string(eps) + " the answer is " + to_string(opt) + '\n';
+			cont.push_back(vec);
+			vec.clear();
+		}
+		i++;
 	}
-	fout.close();
 	fin.close();
 }

@@ -101,7 +101,16 @@ int main()
 
 	add_k_retic(tree_0, p, 2, prb, rtcs);*/
 
-	file_process(1);
+	vector<string> s;
+	int k = 2;
+	bool pos_k = true;
+
+	read_file(s, "D:\\res.txt");
+
+	file_process(k, 0.000001, pos_k, s);
+
+	write_file(s, "D:\\res.txt");
+
 
 	system("pause");
 

@@ -39,7 +39,7 @@ int find_matching_parenthesis(string str, int si, int ei)
 
 node* string_to_tree(string src)
 {
-	src = remove_odd_node(src);
+    src = remove_odd_node(src);
 
 	node* root = new node();
 	root->label = "root";
@@ -104,11 +104,11 @@ node* string_to_tree_recur(string src, int& num)
 	size_t left_opening = src.find(string("("), 1);
 	node* left;
 	size_t left_side_comma;
-	if (!left_opening)
+	if (left_opening == 1)
 	{
 		int left_closing = find_matching_parenthesis(src, left_opening, src.length());
 		left_side_comma = src.find(string(","), left_closing);
-		left = string_to_tree_recur(src.substr(1, left_side_comma - 2), num);
+		left = string_to_tree_recur(src.substr(1, left_side_comma - 1), num);
 	}
 	else
 	{
@@ -160,4 +160,4 @@ string remove_odd_node(string src)
 		src.replace(semicolon1 + 1, first_comma - 1, string(""));
 
 	return src;
-}
+}
