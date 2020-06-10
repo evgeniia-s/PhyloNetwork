@@ -102,18 +102,28 @@ void file_process(int k, double eps, bool& pos_k, vector<string>& cont)
 	int n = 0;
 	double p_1 = 0; double p_2 = 0;
 
-	// && !fin.eof())
-
-	while (getline(fin, line))
+	while (getline(fin, line) && !fin.eof())
 	{
+		n = 0;
+
 		tmp = line.substr(0, line.find('\t'));
 		vec = to_string(i) + ": " + tmp + '\n';
 		cont.push_back(vec);
 		vec.clear();
+		cout << i << ": " << tmp + "  " << endl; 
+		tmp.clear();
 		tmp = line.substr(line.find('('));
 
 		tree = string_to_tree(tmp);
 		number_of_nodes(tree, n);
+		//if (n > 5 && n < 13)
+		//	cout << '\t' << tmp << endl;
+		//else
+		//	if (n >= 13)
+		//		cout << "too big" << endl;
+		//	else
+		//		cout << "too small" << endl;
+		tmp.clear();
 		vec = "Number of nodes: " + to_string(n) + '\n';
 		cont.push_back(vec);
 		vec.clear();
@@ -125,7 +135,7 @@ void file_process(int k, double eps, bool& pos_k, vector<string>& cont)
 
 		floyd(tree, d, n);
 
-		//nums_to_labels(tree);
+		nums_to_labels(tree);
 
 		cout << net_to_string(tree);
 

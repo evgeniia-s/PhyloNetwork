@@ -23,8 +23,8 @@ void add_retic(node* tree, vector<int> edg_1, vector<int> edg_2, int num_ret)
 
 	ret_1->retic = ret_0;
 
-	ret_0->label = "#H" + to_string(num_ret) + ":1:0.5";
-	ret_1->label = "#H" + to_string(num_ret) + ":1:0.5";
+	ret_0->label = "#H" + to_string(num_ret);
+	ret_1->label = "#H" + to_string(num_ret);
 
 	if (t_0->p[0]->number == t_2->number)
 		t_0->p[0] = ret_0;
