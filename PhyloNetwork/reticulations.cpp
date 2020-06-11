@@ -23,8 +23,8 @@ void add_retic(node* tree, vector<int> edg_1, vector<int> edg_2, int num_ret)
 
 	ret_1->retic = ret_0;
 
-	ret_0->label = "#H" + to_string(num_ret);
-	ret_1->label = "#H" + to_string(num_ret);
+	ret_0->label = "#H" + to_string(num_ret) + ":1::0.5";
+	ret_1->label = "#H" + to_string(num_ret) + ":1::0.5";
 
 	if (t_0->p[0]->number == t_2->number)
 		t_0->p[0] = ret_0;
@@ -65,7 +65,7 @@ vector<vector<int>> get_retic_sets(vector<vector<vector<int>>> prs, vector<vecto
 	return res;
 }
 
-void add_k_retic(node* tree, vector<vector<vector<int>>> prs, int k, double& prob, vector<int>& rtcs, bool& pos_k)
+void add_k_retic(node* tree, vector<vector<vector<int>>> prs, int k, double& prob, double eps, vector<int>& rtcs, bool& pos_k)
 {
 	vector<int> u;
 	vector<int> v;
@@ -127,7 +127,7 @@ void add_k_retic(node* tree, vector<vector<vector<int>>> prs, int k, double& pro
 //	return true;
 //}
 
-void add_retic_to_net(node* tree, vector<vector<vector<int>>> prs, int k, double& prob, vector<int>& rtcs)
+void add_retic_to_net(node* tree, vector<vector<vector<int>>> prs, int k, double& prob, double eps, vector<int>& rtcs)
 {
 	vector<int> u;
 	vector<int> v;

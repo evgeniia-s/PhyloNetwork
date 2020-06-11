@@ -98,35 +98,38 @@ void file_process(int k, double eps, bool& pos_k, vector<string>& cont)
 	string line;
 	string tmp; 
 	string vec;
+	string s;
 	int i = 1;
 	int n = 0;
 	double p_1 = 0; double p_2 = 0;
 
 	while (getline(fin, line) && !fin.eof())
 	{
-		n = 0;
+		n = 0; 
 
-		tmp = line.substr(0, line.find('\t'));
-		vec = to_string(i) + ": " + tmp + '\n';
+		s = line.substr(0, line.find('\t'));
+		vec = to_string(i) + ": " + s + '\n';
 		cont.push_back(vec);
 		vec.clear();
-		cout << i << ": " << tmp + "  " << endl; 
-		tmp.clear();
+		//cout << i << ": " << s + "  " << endl; 
+		//s.clear();
 		tmp = line.substr(line.find('('));
+
+		//if (tmp[1] != '(') {
 
 		tree = string_to_tree(tmp);
 		number_of_nodes(tree, n);
-		//if (n > 5 && n < 13)
-		//	cout << '\t' << tmp << endl;
-		//else
-		//	if (n >= 13)
-		//		cout << "too big" << endl;
-		//	else
-		//		cout << "too small" << endl;
-		tmp.clear();
+			/*if (n == 11)
+				cout << s << '\t' << tmp << endl;*/
+			tmp.clear();
+			s.clear();
 		vec = "Number of nodes: " + to_string(n) + '\n';
 		cont.push_back(vec);
 		vec.clear();
+
+		cout << "Number of nodes: " + to_string(n) << endl;
+		cout << endl;
+		//}
 
 		int** d;
 		d = new int *[n];
@@ -135,7 +138,7 @@ void file_process(int k, double eps, bool& pos_k, vector<string>& cont)
 
 		floyd(tree, d, n);
 
-		nums_to_labels(tree);
+		//nums_to_labels(tree);
 
 		cout << net_to_string(tree);
 
@@ -149,7 +152,7 @@ void file_process(int k, double eps, bool& pos_k, vector<string>& cont)
 
 		vector<int> rtcs;
 
-		add_k_retic(tree, p, k + 1, p_1, rtcs, pos_k);
+		add_k_retic(tree, p, k + 1, p_1, eps, rtcs, pos_k);
 		if (!pos_k)
 		{
 			vec = "Not possible to add " + to_string(k + 1) + " reticulations." + '\n';
@@ -164,8 +167,8 @@ void file_process(int k, double eps, bool& pos_k, vector<string>& cont)
 			vec.clear();
 			rtcs.clear();
 
-			add_k_retic(tree, p, k, p_2, rtcs, pos_k);
-			add_retic_to_net(tree, p, k + 1, p_2, rtcs);
+			add_k_retic(tree, p, k, p_2, eps, rtcs, pos_k);
+			add_retic_to_net(tree, p, k + 1, p_2, eps, rtcs);
 
 			if (p_2 != 1000)
 			{
