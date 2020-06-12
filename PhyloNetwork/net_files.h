@@ -26,4 +26,4 @@ string exec(const char* cmd); //Вызов команды из командно�
 
 void get_prob(string net, string tree, double& prob); //Получение log probability заданной сети
 
-void file_process(int k, double eps, bool& pos_k, vector<string>& cont); //
+void file_process(int k, double eps, bool& pos_k, vector<string>& cont); //Конвейер всего алгоритма

@@ -1,4 +1,4 @@
-#include "net_files.h"
+﻿#include "net_files.h"
 
 void read_file(vector<string>& cont, string file_name)
 {
@@ -105,31 +105,26 @@ void file_process(int k, double eps, bool& pos_k, vector<string>& cont)
 
 	while (getline(fin, line) && !fin.eof())
 	{
-		n = 0; 
+		n = 0; //Число вершин дерева
 
-		s = line.substr(0, line.find('\t'));
+		s = line.substr(0, line.find('\t')); //Запоминание названия дерева
 		vec = to_string(i) + ": " + s + '\n';
 		cont.push_back(vec);
 		vec.clear();
-		//cout << i << ": " << s + "  " << endl; 
-		//s.clear();
-		tmp = line.substr(line.find('('));
+		cout << i << ": " << s + "  " << endl; 
+		s.clear();
 
-		//if (tmp[1] != '(') {
+		tmp = line.substr(line.find('(')); //Запоминание дерева
 
-		tree = string_to_tree(tmp);
+		tree = string_to_tree(tmp); //Перевод строки в дерево
 		number_of_nodes(tree, n);
-			/*if (n == 11)
-				cout << s << '\t' << tmp << endl;*/
-			tmp.clear();
-			s.clear();
+		tmp.clear();
 		vec = "Number of nodes: " + to_string(n) + '\n';
 		cont.push_back(vec);
 		vec.clear();
 
 		cout << "Number of nodes: " + to_string(n) << endl;
 		cout << endl;
-		//}
 
 		int** d;
 		d = new int *[n];
@@ -137,8 +132,6 @@ void file_process(int k, double eps, bool& pos_k, vector<string>& cont)
 			d[i] = new int[n];
 
 		floyd(tree, d, n);
-
-		//nums_to_labels(tree);
 
 		cout << net_to_string(tree);
 
@@ -153,7 +146,8 @@ void file_process(int k, double eps, bool& pos_k, vector<string>& cont)
 		vector<int> rtcs;
 
 		add_k_retic(tree, p, k + 1, p_1, eps, rtcs, pos_k);
-		if (!pos_k)
+		cout << endl;
+		if (!pos_k) //Проверка были ли вставлены ретикуляции
 		{
 			vec = "Not possible to add " + to_string(k + 1) + " reticulations." + '\n';
 			cont.push_back(vec);
@@ -168,6 +162,7 @@ void file_process(int k, double eps, bool& pos_k, vector<string>& cont)
 			rtcs.clear();
 
 			add_k_retic(tree, p, k, p_2, eps, rtcs, pos_k);
+			cout << endl;
 			add_retic_to_net(tree, p, k + 1, p_2, eps, rtcs);
 
 			if (p_2 != 1000)
