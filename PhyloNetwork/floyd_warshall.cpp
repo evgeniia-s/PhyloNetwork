@@ -58,6 +58,8 @@ bool is_edge(node* r, int num)
 		return false;
 }
 
+const int inf = 10000; 
+
 void floyd(node* r, int** d, int n)
 {
 	for (int i = 0; i < n; i++) //Инициализация матрицы d 
@@ -70,7 +72,7 @@ void floyd(node* r, int** d, int n)
 				if (is_edge(found_node, j))
 					d[i][j] = 1; //Если ребро существует
 				else
-					d[i][j] = 10000; //Если ребро не существует	
+					d[i][j] = inf; //Если ребро не существует	
 									 //Большое число - аналог бесконечности в алгоритме
 		}
 

@@ -20,10 +20,8 @@ void upd_file(vector<string>& cont, string net, string tree); //Процедур
 
 void write_file(vector<string> cont, string file_name); //Процедура записи нового содержимого в файл
 
-string execute(string cmd); 
-
 string exec(const char* cmd); //Вызов команды из командной строки и перехват результата в строку
 
 void get_prob(string net, string tree, double& prob); //Получение log probability заданной сети
 
-void file_process(int k, double eps, bool& pos_k, vector<string>& cont); //Конвейер всего алгоритма
+void file_process(int k, double eps, bool& pos_k, vector<string>& cont, string input); //Конвейер всего алгоритма

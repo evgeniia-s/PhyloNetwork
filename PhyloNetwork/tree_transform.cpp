@@ -39,8 +39,6 @@ int find_matching_parenthesis(string str, int si, int ei)
 
 node* string_to_tree(string src)
 {
-    src = remove_odd_node(src);
-
 	node* root = new node();
 	root->label = "root";
 	root->number = 0;

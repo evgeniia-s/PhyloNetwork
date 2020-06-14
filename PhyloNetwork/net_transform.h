@@ -8,6 +8,6 @@
 
 void nums_to_labels(node* t); //Запись номеров вершин в их названия (для отладки)
 
-string net_to_string_recur(node* cur, int& num_retic); //Перевод филогенетической сети в строку
+string net_to_string_recur(node* cur, int& num_retic); 
 
-string net_to_string(node* root);
+string net_to_string(node* root); //Перевод филогенетической сети в строку

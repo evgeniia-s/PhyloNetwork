@@ -10,23 +10,26 @@
 #include "net_transform.h"
 #include "net_files.h"
 #include "tree_transform.h"
-#include <ctime>
 
-int main()
+int main(int argc, char* argv[])
 {
-	srand(time(0));
+	if (argc < 2)
+	{
+		cerr << "Input file not specialized" << endl;
+		return -1;
+	}
 
 	vector<string> s;
+	string trees = string(argv[1]);
+
 	int k = 1;
 	bool pos_k = true;
 
-	read_file(s, "D:\\res.txt");
+	read_file(s, string(argv[2]));
 
-	file_process(k, 0.000001, pos_k, s);
+	file_process(k, 0.000001, pos_k, s, trees);
 
-	write_file(s, "D:\\res.txt");
-
-	cout << endl << "runtime = " << clock() / 1000.0 << endl; // גנולÿ נאבמעû ןנמדנאללû   
+	write_file(s, string(argv[2]));
 
 	system("pause");
 

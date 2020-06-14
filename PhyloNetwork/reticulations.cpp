@@ -119,15 +119,6 @@ void add_k_retic(node* tree, vector<vector<vector<int>>> prs, int k, double& pro
 	}
 }
 
-//bool vec_contains(vector<int> cur, vector<int> src)
-//{
-//	for (int i = 0; i < cur.size(); i++)
-//		if (find(src.begin(), src.end(), cur[i]) == src.end())
-//			return false;
-//
-//	return true;
-//}
-
 void add_retic_to_net(node* tree, vector<vector<vector<int>>> prs, int k, double& prob, double eps, vector<int>& rtcs)
 {
 	vector<int> u;

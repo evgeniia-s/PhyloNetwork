@@ -49,16 +49,6 @@ void write_file(vector<string> cont, string file_name)
 	fout.close();
 }
 
-string execute(string cmd)
-{
-	string file_name = "result.txt";
-	system((cmd + " > " + file_name).c_str()); // redirect output to file
-
-													// open file for input, return string containing characters in the file
-	ifstream file(file_name);
-	return { istreambuf_iterator<char>(file), istreambuf_iterator<char>() };
-}
-
 string exec(const char* cmd) {
 	array<char, 128> buffer;
 	string result;
@@ -90,9 +80,9 @@ void get_prob(string net, string tree,  double& prob)
 	}
 }
 
-void file_process(int k, double eps, bool& pos_k, vector<string>& cont)
+void file_process(int k, double eps, bool& pos_k, vector<string>& cont, string input)
 {
-	ifstream fin("D:\\trees.txt");
+	ifstream fin(input);
 
 	node* tree;
 	string line;
